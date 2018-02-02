@@ -4,3 +4,11 @@
 /bin
 /build
 /log
+*.class
+SpringBoot/.classpath
+SpringBoot/.project
+SpringBoot/bin/main/application.properties
+SpringBoot/build/libs/SpringBoot-0.0.1-SNAPSHOT.jar
+SpringBoot/build/libs/SpringBoot-0.0.1-SNAPSHOT.jar.original
+SpringBoot/build/tmp/jar/MANIFEST.MF
+SpringBoot/log/spring.log
