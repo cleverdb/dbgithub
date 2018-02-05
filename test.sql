@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-02-02 18:41:23
+Date: 2018-02-05 18:00:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,6 +36,12 @@ CREATE TABLE `t_classes` (
 -- ----------------------------
 -- Records of t_classes
 -- ----------------------------
+INSERT INTO `t_classes` VALUES ('1', '春装', null, null, '1');
+INSERT INTO `t_classes` VALUES ('2', '夏装', null, null, '1');
+INSERT INTO `t_classes` VALUES ('3', '秋装', null, null, '1');
+INSERT INTO `t_classes` VALUES ('4', '冬装', null, null, '1');
+INSERT INTO `t_classes` VALUES ('5', '春装', null, null, '2');
+INSERT INTO `t_classes` VALUES ('6', '针织衫', null, '1', '1');
 
 -- ----------------------------
 -- Table structure for t_clothes
@@ -94,6 +100,7 @@ CREATE TABLE `t_user` (
 -- Records of t_user
 -- ----------------------------
 INSERT INTO `t_user` VALUES ('1', 'dongbo', '13802305684', '2018-02-02', '1', '312312123');
+INSERT INTO `t_user` VALUES ('2', 'lvxiang', '15630485623', '2018-02-15', '0', '123456');
 
 -- ----------------------------
 -- Table structure for user

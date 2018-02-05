@@ -18,8 +18,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("session---------"+request.getSession().getAttribute(Constants.SESSION_KEY));
-		if(request.getSession().getAttribute(Constants.SESSION_KEY) == null ){
+		System.out.println("session---------"+request.getSession().getAttribute(Constants.SESSION_U_N));
+		if(request.getSession().getAttribute(Constants.SESSION_U_N) == null ){
 			response.sendRedirect("/login");
 			return false;
 		};

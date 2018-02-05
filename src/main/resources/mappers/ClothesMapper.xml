@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongbo.mapper.ClothesMapper">
+  <resultMap id="ClothesResultMap" type="com.dongbo.entity.Clothes">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="clo_name" jdbcType="VARCHAR" property="cloName" />
+    <result column="clo_color" jdbcType="VARCHAR" property="cloColor" />
+    <result column="clo_price" jdbcType="DOUBLE" property="cloPrice" />
+    <result column="clo_picture" jdbcType="VARCHAR" property="cloPicture" />
+    <result column="clo_start" jdbcType="CHAR" property="cloStart" />
+    <result column="classes_id" jdbcType="VARCHAR" property="classesId" />
+  </resultMap>
+  
+  <sql id="Clothes_Column_List">
+    id, clo_name, clo_color, clo_price, clo_picture, clo_start, classes_id
+  </sql>
+  
+  <select id="query" parameterType="com.dongbo.entity.Clothes" resultMap="ClothesResultMap">
+    select
+    <include refid="Clothes_Column_List" />
+    from t_clothes 
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="cloName != null">
+        AND clo_name = #{cloName,jdbcType=VARCHAR}
+      </if>
+      <if test="cloColor != null">
+        AND clo_color = #{cloColor,jdbcType=VARCHAR}
+      </if>
+      <if test="cloPrice != null">
+        AND clo_price = #{cloPrice,jdbcType=DOUBLE}
+      </if>
+      <if test="cloPicture != null">
+        AND clo_picture = #{cloPicture,jdbcType=VARCHAR}
+      </if>
+      <if test="cloStart != null">
+        AND clo_start = #{cloStart,jdbcType=CHAR}
+      </if>
+      <if test="classesId != null">
+        AND classes_id = #{classesId,jdbcType=VARCHAR}
+      </if>
+    
+    </where>
+  </select>
+  
+  <delete id="delete" parameterType="com.dongbo.entity.Clothes">
+    delete from t_clothes where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="com.dongbo.entity.Clothes">
+    insert into t_clothes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cloName != null">
+        clo_name,
+      </if>
+      <if test="cloColor != null">
+        clo_color,
+      </if>
+      <if test="cloPrice != null">
+        clo_price,
+      </if>
+      <if test="cloPicture != null">
+        clo_picture,
+      </if>
+      <if test="cloStart != null">
+        clo_start,
+      </if>
+      <if test="classesId != null">
+        classes_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cloName != null">
+        #{cloName,jdbcType=VARCHAR},
+      </if>
+      <if test="cloColor != null">
+        #{cloColor,jdbcType=VARCHAR},
+      </if>
+      <if test="cloPrice != null">
+        #{cloPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="cloPicture != null">
+        #{cloPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="cloStart != null">
+        #{cloStart,jdbcType=CHAR},
+      </if>
+      <if test="classesId != null">
+        #{classesId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+ 
+  <update id="update" parameterType="com.dongbo.entity.Clothes">
+    update t_clothes
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cloName != null">
+        clo_name = #{cloName,jdbcType=VARCHAR},
+      </if>
+      <if test="cloColor != null">
+        clo_color = #{cloColor,jdbcType=VARCHAR},
+      </if>
+      <if test="cloPrice != null">
+        clo_price = #{cloPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="cloPicture != null">
+        clo_picture = #{cloPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="cloStart != null">
+        clo_start = #{cloStart,jdbcType=CHAR},
+      </if>
+      <if test="classesId != null">
+        classes_id = #{classesId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongbo.mapper.ClassesMapper">
+  <resultMap id="ClassesResultMap" type="com.dongbo.entity.Classes">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="classes_name" jdbcType="VARCHAR" property="classesName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  
+  <sql id="Classes_Column_List">
+    id, classes_name, remark, parent_id, user_id
+  </sql>
+
+  <delete id="delete" parameterType="com.dongbo.entity.Classes">
+    delete from t_classes where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.dongbo.entity.Classes">
+    insert into t_classes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="classesName != null">
+        classes_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="classesName != null">
+        #{classesName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.dongbo.entity.Classes">
+    update t_classes
+    <set>
+      <if test="classesName != null">
+        classes_name = #{classesName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  id = #{id,jdbcType=VARCHAR}
+
+  </update>
+  
+  <select id = "query" resultMap="ClassesResultMap" parameterType="com.dongbo.entity.Classes">
+  	select 
+  	<include refid="Classes_Column_List"/>
+  	from t_classes
+  	<where>
+  	  <if test="id != null">
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="classesName != null">
+        and classes_name = #{classesName,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="parentId != null">
+        and parent_id = #{parentId,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+  	</where>
+  </select>
+</mapper>

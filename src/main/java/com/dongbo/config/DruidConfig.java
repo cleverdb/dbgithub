@@ -1,7 +1,5 @@
 package com.dongbo.config;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -122,7 +120,6 @@ public class DruidConfig {
 	    public ServletRegistrationBean druidServlet() {
 	        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
 
-	        //控制台管理用户，加入下面2行 进入druid后台就需要登录
 	        //servletRegistrationBean.addInitParameter("loginUsername", "admin");
 	        //servletRegistrationBean.addInitParameter("loginPassword", "admin");
 	        return servletRegistrationBean;
@@ -141,16 +138,15 @@ public class DruidConfig {
 //	    @Bean
 //	    public StatFilter statFilter(){
 //	        StatFilter statFilter = new StatFilter();
-//	        statFilter.setLogSlowSql(true); //slowSqlMillis用来配置SQL慢的标准，执行时间超过slowSqlMillis的就是慢。
-//	        statFilter.setMergeSql(true); //SQL合并配置
-//	        statFilter.setSlowSqlMillis(1000);//slowSqlMillis的缺省值为3000，也就是3秒。
+//	        statFilter.setLogSlowSql(true); 
+//	        statFilter.setMergeSql(true); 
+//	        statFilter.setSlowSqlMillis(1000);
 //	        return statFilter;
 //	    }
 
 //	    @Bean
 //	    public WallFilter wallFilter(){
 //	        WallFilter wallFilter = new WallFilter();
-//	        //允许执行多条SQL
 //	        WallConfig config = new WallConfig();
 //	        config.setMultiStatementAllow(true);
 //	        wallFilter.setConfig(config);
